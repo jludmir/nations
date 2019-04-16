@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+        <title>CS1951A: The Wealth &amp; Health of Nations</title>
+        <style type="text/css">
+        #chart {
+            margin-left: 40px;
+            height: 506px;
+        }
+
+        text {
+            font: 10px sans-serif;
+        }
+
+        .dot {
+            stroke: #000;
+        }
+
+        .axis path, .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .label {
+            fill: #777;
+        }
+
+        .year.label {
+            font: 500 196px "Helvetica Neue";
+            fill: #ddd;
+        }
+
+        .year.label.active {
+            fill: #aaa;
+        }
+
+        .overlay {
+            fill: none;
+            pointer-events: all;
+            cursor: ew-resize;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="chart"></div>
+        <script type="text/javascript" src="./nations.js"></script>
+        <p>How I created solution: I pretty much followed the steps outlined. To be honest, this assignment was difficult for someone without a web programming background.
+          <br />In particular, I found steps 6 and 7 very difficult: For step 6, the first issue that I was having was figuring out how scaleLinear worked, and how the mouse interactions were coded/worked.<br/>
+           Next, after figuring out the reason you guys recommended it in the first place (i.e. to map the mouse's x-position to a year), <br/>
+           I first removed the dots and then pretty much just copied over the code that made/plotted the dots from step 4 into both the mousemove and tween interactions, simply changing the years to the new year. <br/>
+           <br/>After doing that, step 7 (adding the Voronoi) was a hassle. I had a hard time understanding how the code was supposed to be implemented, and only now understand the basics of what each piece does.
+           <br/> I followed the walkthrough that you guys recommended until the tooltips (read in Piazza that we did not have to worry about that), and then did exactly what I did with the dots on mousemove/tween: <br/>
+            I added a class to the voronoi paths called vorpath (otherwise removing all paths would delete the axes as well), then I removed the vorpaths on mousemove/tween. After, I rebuilt the Voronoi with the same code, just changed the year.
+           <br/> Note: On step 4, I changed your template slightly such that we append the dot title in the same "line" as we append the dot itself.
+           <br/> Another Note: When the script adds/removes dots, it leaves behind empty g tags. Doesn't impact the performance (I'm guessing if you drag the year around for like an hour it'll probably bug out due to the huge number of tags).
+        </p>
+    </body>
+</html>
